@@ -1,3 +1,13 @@
-# Install zplug
+# install zplug
 export ZPLUG_HOME=~/.zsh/.zplug 
 [ ! -e $ZPLUG_HOME ] && mkdir -pv ~/.zsh/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME; 
+
+# check for dependencies (only works on arch)
+function installDependencies(){
+  package_list=('neovim' 'neofetch' 'git' 'bat' 'lsd' 'ripgrep')
+  for pgk in $package_list; do
+    pacman -Q $pgk >/dev/null || sudo pacman -S $pgk
+  done
+}
+
+(which pacman >/dev/null) && installDependencies
