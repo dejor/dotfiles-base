@@ -37,55 +37,15 @@ local mappings = {
         "<leader>T",
         "<cmd>Telescope live_grep theme=ivy<cr>",
         desc = "Find text (working directory)"
-    }, -- Debug --
-    {
-        "<F4>",
-        function() require('dap').terminate() require('dapui').close() end,
-        desc = "Terminate session (Debug)"
-    },
-    {
-        "<F5>",
-        function() require('dap').continue() end,
-        desc = "Continue (Debug)"
-    }, {
-        "<F6>",
-        function() require('dap').run_to_cursor() end,
-        desc = "Run to cursor (Debug)"
-    }, {
-        "<F7>",
-        function() require("dapui").eval(nil, {enter = true}) end,
-        desc = "Inspect variable (Debug)"
-    }, {
-        "<F8>",
-        function() require('dap').toggle_breakpoint() end,
-        desc = "Toggle breakpoint (Debug)"
-    },
-    {
-        "<F9>",
-        function() require('dap').step_back() end,
-        desc = "Step back (Debug)"
-    }, {
-        "<F10>",
-        function() require('dap').step_over() end,
-        desc = "Step over (Debug)"
-    }, {
-        "<F11>",
-        function() require('dap').step_into() end,
-        desc = "Step into (Debug)"
-    }, {
-        "<S-F11>",
-        function() require('dap').step_out() end,
-        desc = "Step out (Debug)"
-    },
-    {"<F12>", function() require('dap').restart() end, desc = "Restart (Debug)"},
-
+    }, 
     -- Packer --
     {"<leader>p", group = "Packer"},
     {"<leader>pc", "<cmd>PackerCompile<cr>", desc = "Compile"},
     {"<leader>pi", "<cmd>PackerInstall<cr>", desc = "Install"},
     {"<leader>ps", "<cmd>PackerSync<cr>", desc = "Sync"},
     {"<leader>pS", "<cmd>PackerStatus<cr>", desc = "Status"},
-    {"<leader>pu", "<cmd>PackerUpdate<cr>", desc = "Update"}, -- Git --
+    {"<leader>pu", "<cmd>PackerUpdate<cr>", desc = "Update"}, 
+    -- Git --
     {"<leader>g", group = "Git"}, {
         "<leader>gj",
         "<cmd>lua require 'gitsigns'.next_hunk()<cr>",
@@ -123,52 +83,8 @@ local mappings = {
     {"<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file"},
     {"<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch"},
     {"<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit"},
-    {"<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff"}, -- LSP --
-    {"<leader>l", group = "LSP"},
-    {"<leader>la", "<cmd>Lspsaga code_action<cr>", desc = "Code Action"},
-    {
-        "<leader>lf",
-        "<cmd>lua vim.lsp.buf.format{async=true}<cr>",
-        desc = "Format"
-    }, {"<leader>li", "<cmd>LspInfo<cr>", desc = "Info"}, {
-        "<leader>lj",
-        "<cmd>Lspsaga diagnostic_jump_next<CR>",
-        desc = "Next Diagnostic"
-    }, {
-        "<leader>lk",
-        "<cmd>Lspsaga diagnostic_jump_prev<cr>",
-        desc = "Prev Diagnostic"
-    },
-    {
-        "<leader>lq",
-        "<cmd>lua vim.diagnostic.setloclist()<cr>",
-        desc = "Quickfix"
-    }, {"<leader>lr", "<cmd>Lspsaga rename<cr>", desc = "Rename"}, {
-        "<leader>ls",
-        "<cmd>Telescope lsp_document_symbols<cr>",
-        desc = "Document Symbols"
-    }, {
-        "<leader>lS",
-        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-        desc = "Workspace Symbols"
-    }, --- LSP Diagnostics ---
-    {"<leader>ld", group = "Diagnostics"}, {
-        "<leader>ldd",
-        "<cmd>Telescope diagnostics bufnr=0<cr>",
-        desc = "Document Diagnostics"
-    }, {
-        "<leader>ldk",
-        "<cmd>Lspsaga show_cursor_diagnostics<cr>",
-        desc = "Show line diagnostics"
-    }, {
-        "<leader>ldl",
-        "<cmd>Lspsaga show_line_diagnostics<cr>",
-        desc = "Show line diagnostics"
-    }, {
-        "<leader>ldw",
-        "<cmd>Telescope diagnostics<cr>",
-        desc = "Workspace Diagnostics"
-    }, -- Search --
+    {"<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff"},  
+    -- Search --
     {"<leader>s", group = "Search"},
     {"<leader>sb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch"},
     {"<leader>sc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme"},

@@ -6,7 +6,7 @@ export ZPLUG_HOME=~/.zsh/.zplug
 
 
 if [[ $ID == "ubuntu" ]]; then
-    package_list=('zsh' 'neovim' 'git' 'bat' 'lsd' 'ripgrep')
+    package_list=('zsh' 'neovim' 'git' 'gcc' 'lsd' 'ripgrep')
     for pgk in $package_list; do
         dpkg -s $pgk &> /dev/null || sudo apt-get install $pgk
     done
