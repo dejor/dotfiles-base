@@ -5,11 +5,11 @@ Basic dotfiles.
 ## Installation
 
 ```bash
-    stow -t $HOME nvim tmux zsh
+stow -t $HOME nvim tmux zsh
 ```
 
 ## Uninstall
 
 ```bash
-    stow -t $HOME -D nvim tmux zsh
+stow -t $HOME -D nvim tmux zsh
 ```
