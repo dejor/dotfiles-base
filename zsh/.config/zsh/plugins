@@ -24,7 +24,7 @@ if ! zplug check --verbose; then
 fi
 
 # Source plugins and add commands to $PATH
-zplug load 
+zplug load
 
 # set color theme
 base16_snazzy

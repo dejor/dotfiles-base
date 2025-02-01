@@ -2,12 +2,27 @@
 export ZPLUG_HOME=~/.zsh/.zplug 
 [ ! -e $ZPLUG_HOME ] && mkdir -pv ~/.zsh/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME; 
 
-# check for dependencies (only works on arch)
-function installDependencies(){
+. /etc/os-release
+
+
+if [[ $ID == "ubuntu" ]]; then
+function installDependenciesOnUbuntu(){
+  package_list=('zsh' 'neovim' 'git' 'bat' 'lsd' 'ripgrep')
+  for pgk in $package_list; do
+    sudo apt show $pgk >/dev/null || sudo apt install $pgk
+  done
+}
+  (which apt >/dev/null) && installDependenciesOnUbuntu
+fi
+
+
+if [[ $ID == "arch" ]]; then
+function installDependenciesOnArch(){
   package_list=('neovim' 'neofetch' 'git' 'bat' 'lsd' 'ripgrep')
   for pgk in $package_list; do
     pacman -Q $pgk >/dev/null || sudo pacman -S $pgk
   done
 }
 
-(which pacman >/dev/null) && installDependencies
+(which pacman >/dev/null) && installDependenciesOnArch
+fi

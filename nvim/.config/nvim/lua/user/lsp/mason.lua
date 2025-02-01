@@ -1,17 +1,23 @@
 local servers = {
-	"sumneko_lua",
-	-- "cssls",
-	-- "html",
-  "tsserver",
+	"bashls",
+  "clangd",
+	"cssls",
+  "dockerls",
+  "gopls",
+  "helm_ls",
+	"html",
+  "hyprls",
+	"jsonls",
+	"lua_ls",
+  "marksman",
 	"pyright",
   "rust_analyzer",
---  "rustfmt",
-	"bashls",
-	-- "jsonls",
+  "ts_ls",
+  "vimls",
   "yamlls",
-  "clangd",
-  "gopls",
 }
+
+
 
 local settings = {
 	ui = {

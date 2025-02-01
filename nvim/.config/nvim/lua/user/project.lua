@@ -1,17 +1,3 @@
-local nvim_tree_status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not nvim_tree_status_ok then
-  return
-end
-
-nvim_tree.setup({
-  sync_root_with_cwd = true,
-  respect_buf_cwd = true,
-  update_focused_file = {
-    enable = true,
-    update_root = true
-  },
-})
-
 local project_status_ok, project = pcall(require, "project_nvim")
 if not project_status_ok then
 	return

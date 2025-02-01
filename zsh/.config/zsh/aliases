@@ -1,37 +1,44 @@
-# Custom aliases 
+# Custom aliases
 alias mkd="mkdir -vp"
 alias cp="cp -i"
 
 function setLsAliases(){
-  alias l="lsd -l"
-  alias la="lsd -la"
-  alias ls="lsd"
-  alias lsa="lsd -a"
-}
-function setParu(){
-  alias p="paru"
+    alias l="lsd -l"
+    alias la="lsd -la"
+    alias ls="lsd"
+    alias lsa="lsd -a"
 }
 function setNvim(){
-  alias v="nvim"
-  alias sv="sudo nvim"
-  alias vim="nvim"
-}
-function setDoas(){
-  alias sudo="doas"
+    alias v="nvim"
+    alias sv="sudo nvim"
+    alias vim="nvim"
 }
 function setFzf(){
-  alias vfzf='vim $(fzf)'
-  alias fzh="history 1 | fzf" 
+    alias vfzf='vim $(fzf)'
+    alias fzh="history 1 | fzf"
 }
 function setManpager(){
-  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-  export MANROFFOPT="-c"
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    export MANROFFOPT="-c"
 }
 
 (which lsd >/dev/null) && setLsAliases
-(which paru >/dev/null) && setParu
 (which nvim >/dev/null) && setNvim
 (which doas >/dev/null) && setDoas
 (which fzf >/dev/null) && setFzf
 (which bat >/dev/null) && setManpager
 
+. /etc/os-release
+if [[ $ID == "arch" ]]; then
+    (which paru >/dev/null) && setParu
+
+    function setParu(){
+        alias p="paru"
+    }
+    function setDoas(){
+        alias sudo="doas"
+    }
+fi
+
+if [[ $ID == "ubuntu" ]]; then
+fi
