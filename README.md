@@ -4,8 +4,6 @@ Basic dotfiles.
 
 ## Installation
 
-Install my-project with npm
-
 ```bash
     stow -t $HOME nvim tmux zsh
 ```
