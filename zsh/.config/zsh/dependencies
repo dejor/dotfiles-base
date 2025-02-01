@@ -1,28 +1,24 @@
 # install zplug
-export ZPLUG_HOME=~/.zsh/.zplug 
-[ ! -e $ZPLUG_HOME ] && mkdir -pv ~/.zsh/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME; 
+export ZPLUG_HOME=~/.zsh/.zplug
+[ ! -e $ZPLUG_HOME ] && mkdir -pv ~/.zsh/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME;
 
 . /etc/os-release
 
 
 if [[ $ID == "ubuntu" ]]; then
-function installDependenciesOnUbuntu(){
-  package_list=('zsh' 'neovim' 'git' 'bat' 'lsd' 'ripgrep')
-  for pgk in $package_list; do
-    sudo apt show $pgk >/dev/null || sudo apt install $pgk
-  done
-}
-  (which apt >/dev/null) && installDependenciesOnUbuntu
+    package_list=('zsh' 'neovim' 'git' 'bat' 'lsd' 'ripgrep')
+    for pgk in $package_list; do
+        dpkg -s $pgk &> /dev/null || sudo apt-get install $pgk
+    done
+    (which starship &> /dev/null) || curl -sS https://starship.rs/install.sh | sh
+
 fi
 
 
 if [[ $ID == "arch" ]]; then
-function installDependenciesOnArch(){
-  package_list=('neovim' 'neofetch' 'git' 'bat' 'lsd' 'ripgrep')
-  for pgk in $package_list; do
-    pacman -Q $pgk >/dev/null || sudo pacman -S $pgk
-  done
-}
+    package_list=('neovim' 'neofetch' 'git' 'bat' 'lsd' 'ripgrep' 'starship')
+    for pgk in $package_list; do
+        pacman -Q $pgk >/dev/null || sudo pacman -S $pgk
+    done
 
-(which pacman >/dev/null) && installDependenciesOnArch
 fi
